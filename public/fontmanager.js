@@ -1,4 +1,14 @@
 const isAppPackaged = window.electron.isAppPackaged;
+let basePath;
+
+if (isAppPackaged) {
+    // Production path
+    basePath = __dirname; // Use Electron's __dirname for production
+} else {
+    // Development path
+    basePath = '.'; // Relative path from the HTML file in development
+}
+
 
 async function loadFonts() {
     const fontSelector = document.getElementById('fontSelector');
@@ -16,10 +26,10 @@ async function loadFonts() {
             const styleSheet = document.styleSheets[0];
             const fontFace = `@font-face {
                 font-family: "${fontName}";
-                src: url("${isAppPackaged ? './public/fonts' : '/public/fonts'}/${font}");
+                src: url("${basePath}/fonts/${font}");
             }`;
             
-            console.log(`Font Path: ${isAppPackaged ? './public/fonts' : '/public/fonts'}/${font}`);
+            console.log(`Font Path:  ${basePath}/fonts/${font}`);
 
             styleSheet.insertRule(fontFace, styleSheet.cssRules.length);
         });

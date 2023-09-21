@@ -6,6 +6,14 @@ const express = require('express');
 const server = express();
 const fs = require('fs'); // Import the fs module if you are using it.
 
+console.log('Expected fonts folder in production:', path.join(__dirname, 'path_to_your_fonts_folder'));
+
+
+let resourcesPath = app.isPackaged 
+    ? path.join(app.getAppPath(), 'resources') 
+    : __dirname;
+
+
 console.log('Path to preload.js:', path.join(__dirname, 'preload.js'));
 
 let mainWindow;
@@ -20,7 +28,8 @@ function createWindow() {
             nodeIntegration: false,
             contextIsolation: true,
             preload: path.join(__dirname, 'preload.js'),
-            additionalArguments: [`isAppPackaged=${app.isPackaged}`],
+            additionalArguments: [`isAppPackaged=${app.isPackaged}`, `resourcesPath=${resourcesPath}`],
+
         }
     });
 
