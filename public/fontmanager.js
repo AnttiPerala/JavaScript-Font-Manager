@@ -1,3 +1,8 @@
+
+
+const isAppPackaged = window.electron.isAppPackaged;
+
+
 async function fetchFonts() {
     try {
         const response = await fetch('/fonts');
@@ -22,9 +27,9 @@ function loadFonts() {
 
             const styleSheet = document.styleSheets[0];
             const fontFace = `@font-face {
-        font-family: "${fontName}";
-        src: url("/public/fonts/${font}");
-      }`;
+            font-family: "${fontName}";
+            src: url("${isAppPackaged ? './public/fonts' : '/public/fonts'}/${font}");
+            }`;
             styleSheet.insertRule(fontFace, styleSheet.cssRules.length);
         });
 

@@ -1,0 +1,33 @@
+{
+  "name": "javascript-font-manager",
+  "version": "1.0.0",
+  "description": "A simple JavaScript Font Manager using Electron.",
+  "main": "electron.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnttiPerala/JavaScript-Font-Manager.git"
+  },
+  "keywords": [
+    "font-manager",
+    "electron",
+    "express",
+    "javascript"
+  ],
+  "author": "Antti Perala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnttiPerala/JavaScript-Font-Manager/issues"
+  },
+  "homepage": "https://github.com/AnttiPerala/JavaScript-Font-Manager#readme",
+  "dependencies": {
+    "electron": "^26.2.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "electron-packager": "^17.1.2"
+  }
+}
