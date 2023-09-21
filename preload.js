@@ -1,8 +1,11 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
 console.log('preload.js is loaded');
 
-
-const { contextBridge } = require('electron');
-
 contextBridge.exposeInMainWorld('electron', {
-    isAppPackaged: process.argv.includes('--isAppPackaged=true')
+    getFonts: async () => {
+        // If getFonts is asynchronous, you may want to use ipcRenderer.invoke
+        return ipcRenderer.invoke('get-fonts');
+    },
+    // You can expose other functionalities here as well.
 });

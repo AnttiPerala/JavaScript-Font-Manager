@@ -9,7 +9,7 @@ const port = 3000;
 app.use('/public', express.static('public'));
 
 app.get('/fonts', (req, res) => {
-    const fontsFolder = path.join(__dirname, 'public', 'fonts');
+    const fontsFolder = window.electron.path.join(__dirname, 'public', 'fonts');
     fs.readdir(fontsFolder, (err, files) => {
         if (err) return res.status(500).send('Unable to read font files');
         res.json(files);
@@ -17,7 +17,7 @@ app.get('/fonts', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(window.electron.path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
