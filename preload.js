@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('electron', {
     },
     getResourcesPath: () => {
         const resourcesPath = process.argv.find(arg => arg.startsWith('resourcesPath=')).split('=')[1];
+        console.log('resourcesPath ', resourcesPath);
         return resourcesPath;
     }
     // You can expose other functionalities here as well.
